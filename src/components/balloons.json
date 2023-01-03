@@ -1,0 +1,27 @@
+[
+    {
+        "color": "red",
+        "baseColor": "#d92323ed",
+        "subSurfColor":"#530202de"
+    },
+    {
+        "color": "yellow",
+        "baseColor": "#d9be23ed",
+        "subSurfColor":"#534b02de"
+    },
+    {
+        "color": "green",
+        "baseColor": "#0b7dbaed;",
+        "subSurfColor":"#023753de"
+    },
+    {
+        "color": "blue",
+        "baseColor": "#0b7dbaed;",
+        "subSurfColor":"#023753de"
+    },
+    {
+        "color": "pink",
+        "baseColor": "#bb23d9ed",
+        "subSurfColor":"#510f80de"
+    }
+]
