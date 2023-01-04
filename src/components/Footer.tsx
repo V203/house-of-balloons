@@ -5,10 +5,10 @@ import IBalloon from "../IBalloon";
 
 
 let Footer = () => {
-        let { balloons, setBalloons } = useContext<Array<IBalloon>>(BalloonContext);
+        let { balloons, setBalloons } = useContext(BalloonContext);
         let handleClick = async (color: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
             e.preventDefault();
-            color
+            
             let updatBalloons = balloons.map((balloons:IBalloon) => {
                 if (balloons.color !== color) {
                     return balloons
@@ -19,7 +19,8 @@ let Footer = () => {
                 }
             })
     
-    
+            console.log(balloons);
+            
             setBalloons(updatBalloons);
     
     

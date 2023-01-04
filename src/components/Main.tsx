@@ -1,23 +1,15 @@
-import React, { ReactElement, ReactComponentElement, createContext, useState, useEffect, useContext, useCallback, Dispatch } from "react";
-import imageToAdd from "../assets/balloon.svg";
-import express from "express";
-import apiClient from "../api/balloon-api";
-import axios, { AxiosResponse } from "axios";
-
-import api from "../api/balloon-api";
+import React, { useContext} from "react";
 import BalloonImages from "../assets/BalloonImages";
-import { BalloonContext, balloonType } from "../context/Ballooncontext";
+import { BalloonContext } from "../context/Ballooncontext";
 import IBalloon from "../IBalloon";
-
 
 let Main = () => {
 
-    let {balloons} = useContext<Array<IBalloon>>(BalloonContext);
+    let {balloons} = useContext<any>(BalloonContext);
 
     return (
         <>
             <div className="main-flex">
-
 
                 <div className="main-content">
                     <h1 id="ContentTypography">

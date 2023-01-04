@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import IBalloon from "../IBalloon";
 
-export type balloonType =[{
+export type BalloonType =[{
     color:string,
     count:number,
     basecolor:string,
@@ -9,6 +9,6 @@ export type balloonType =[{
     
 }];
 
-export let BalloonContext = React.createContext<balloonType | Array<IBalloon> >([]);
+export let BalloonContext = React.createContext<any>([]);
 
   
