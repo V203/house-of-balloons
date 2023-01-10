@@ -1,3 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 
-React
+
+
+describe("Test Suite",()=>{
+
+it("The return the colors that have a count between one and five.",()=>{
+  
+
+});
+
+
+
+it("The return the colors that have a count between six and nine.",()=>{
+
+})
+
+
+it("The return the colors that have above eleven.",()=>{
+
+})
+})
