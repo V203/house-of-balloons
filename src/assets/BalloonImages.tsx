@@ -1,8 +1,5 @@
 import React,{useState} from "react";
 
-
-
-
 let BalloonImages = (props: any) => {
     
     let basecolor = props.basecolor
@@ -13,8 +10,6 @@ let BalloonImages = (props: any) => {
 
 
 <>
-
-
 <svg className="balloon-float" width="50" height="70" viewBox="0 0 88 134" fill={basecolor} xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_3_31)">
         <g filter="url(#filter1_i_3_31)">

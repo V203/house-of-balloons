@@ -9,25 +9,24 @@ let Footer = () => {
         let handleClick = async (color: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                 e.preventDefault();
 
-                let updatBalloons = balloons.map((balloons: IBalloon) => {
+                let updatBalloons = balloons.map((balloons: IBalloon,index:number) => {
                         if (balloons.color !== color) {
                                 return balloons
+                        }else if(index >= 3 && balloons.count >= 10){
+                                return {...balloons,count:balloons.count = 9}
                         } else {
                                 return {
                                         ...balloons, count: balloons.count + 1
                                 }
                         }
-                })
-
-                setBalloons(updatBalloons);
-                let b = balloons.sort((el1: any, el2: any) => {
+                }).sort((el1: any, el2: any) => {
 
                         return (el1.count < el2.count) ? 1 : (el1.count > el2.count) ? -1 : 0;
-                })
+                
+                });
 
-                console.log(b);
-
-
+                setBalloons(updatBalloons);
+        
         }
 
         return (

@@ -18,14 +18,11 @@ let Main = () => {
 if(output.length !== 0 ){
     setTimeout(()=> setDisplayState(!displayState),7000)
 }
-
-    console.log(displayState);
-    
     return (
         <>
             <div className="main-flex">
 
-       {output.length !==0 ? <WinningBalloon color={output[0].color} count={output[0].count} displayBool={displayState} basecolor={output[0].basecolor} subsurface={output[0].subsurface} />:"" }
+       {output.length !==0 ? <WinningBalloon key={output[0].color} color={output[0].color} count={output[0].count} displayBool={displayState} basecolor={output[0].basecolor} subsurface={output[0].subsurface} />:"" }
                 <div className="main-content">
                     <h1 id="ContentTypography">
                         Popular Colors
@@ -38,17 +35,17 @@ if(output.length !== 0 ){
                     <h1 id="ContentTypography">
                         The Trending Color
                     </h1>
-                    {balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => <BalloonImages subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />).slice(0, 3)}
+                    {balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />).slice(0, 3)}
                 </div>
 
                 <div className="main-content">
                     <h1 id="ContentTypography">
                         Upcoming colors
                     </h1>
-                    {balloons.filter((el: IBalloon) => el.count >= 1 && el.count <= 4).map((el: IBalloon) => <BalloonImages subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)}
+                    {balloons.filter((el: IBalloon) => el.count >= 1 && el.count <= 4).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)}
 
                 </div>
-                {/* {output.map((el:IBalloon)=> <BalloonImages subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)} */}
+                
             </div>
         </>)
 }
