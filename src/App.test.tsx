@@ -90,9 +90,7 @@ describe("\n House of balloons test suite", () => {
     (await balloon).addBalloon("red");
     (await balloon).addBalloon("red");
 
-    console.log((await balloon).getTrendingColors().length);
-    console.log((await balloon).getUpcomingColors().length);
-    console.log((await balloon).getPopularColors().length);
+   
 
     expect((await balloon).getTrendingColors().length).toEqual(1);
 

@@ -8,11 +8,6 @@ let Services =  async () => {
     let balloons:Array<any> = [];
  await  axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) => balloons = response.data).catch(err => err.message);
     
-    
-    
-
-
-
     let getUpcomingColors =  ()=>{
         
         
@@ -26,7 +21,7 @@ let Services =  async () => {
 
     let getTrendingColors = ()=> {
         // balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />).slice(0, 3);
-        console.log(balloons);
+        
         
         return balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />).sort((el1: any, el2: any) => {
 
@@ -54,21 +49,12 @@ let Services =  async () => {
             return (el1.count < el2.count) ? 1 : (el1.count > el2.count) ? -1 : 0;
     
     })
-    
-    
-console.log(balloons);
-
-    
-    return   arr
+    return   arr;
 
     }
-
     let getAllBalloons =   () => {
-
         return balloons
     }
-
-    
 
     return {
         getUpcomingColors,
