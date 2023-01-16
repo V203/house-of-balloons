@@ -4,7 +4,7 @@ import { BalloonContext } from "../context/Ballooncontext";
 import IBalloon from "../IBalloon";
 import WinningBalloon from "./WinnerBalloon";
 import Services from "../Services/Services";
-let Main = async () => {
+let Main =  () => {
     let [displayState,setDisplayState] = useState(false);
 
     let { balloons } = useContext<any>(BalloonContext);
