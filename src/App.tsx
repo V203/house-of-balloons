@@ -7,7 +7,6 @@ import Main from "./components/Main";
 import Header from "./components/Header"
 import { useState, useEffect } from 'react';
 import { BalloonContext } from './context/Ballooncontext';
-import { BalloonType } from './context/Ballooncontext';
 import axios from 'axios';
 
 

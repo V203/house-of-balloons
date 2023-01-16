@@ -3,12 +3,14 @@ import BalloonImages from "../assets/BalloonImages";
 import { BalloonContext } from "../context/Ballooncontext";
 import IBalloon from "../IBalloon";
 import WinningBalloon from "./WinnerBalloon";
-let Main = () => {
+import Services from "../Services/Services";
+let Main = async () => {
     let [displayState,setDisplayState] = useState(false);
 
     let { balloons } = useContext<any>(BalloonContext);
 
 
+    // let serv =   Services()
     let output:any = balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => el).sort((el1: any, el2: any) => {
 
         return (el1.count < el2.count) ? 1 : (el1.count > el2.count) ? -1 : 0;
@@ -28,7 +30,7 @@ if(output.length !== 0 ){
                         Popular Colors
                     </h1>
                     {balloons.filter((el: IBalloon) => el.count >= 5 && el.count < 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)}
-
+                    
                 </div>
 
                 <div className="main-content">
