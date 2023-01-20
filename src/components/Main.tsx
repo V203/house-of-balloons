@@ -1,43 +1,78 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
+import { updateReturn } from "typescript";
 import BalloonImages from "../assets/BalloonImages";
 import { BalloonContext } from "../context/Ballooncontext";
 import IBalloon from "../IBalloon";
 import WinningBalloon from "./WinnerBalloon";
-import Services from "../Services/Services";
-let Main =  () => {
-    let [displayState,setDisplayState] = useState(false);
+import performance from "perf_hooks";
 
+
+let Main = () => {
+    let start = Date.now()
+    let [displayState, setDisplayState] = useState(false);
     let { balloons } = useContext<any>(BalloonContext);
 
+    let trendingBalloons: Array<any> = balloons
+        .filter((el: IBalloon) => el.count >= 11)
+        .map((el: IBalloon) => !el["time"] ? el["time"] = start : el);
 
-    // let serv =   Services()
-    let output:any = balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => el).sort((el1: any, el2: any) => {
 
-        return (el1.count < el2.count) ? 1 : (el1.count > el2.count) ? -1 : 0;
+    let getLongestTrending = (trendBalloons: Array<IBalloon>) => {
+        // let trend = trendBalloons.filter((x:IBalloon)=> x.time < z.time);
+        if (trendBalloons) {
+            return trendBalloons.find((el) => el.time === Math.min(...trendBalloons.map((el) => el.time)));
 
-});
+        }
+    }
 
-if(output.length !== 0 ){
-    setTimeout(()=> setDisplayState(!displayState),7000)
-}
+    let closeWinner = () => { setDisplayState(false) }
+
+
+
+    let getLatestTrending = (trendBalloons: Array<IBalloon>) => {
+        if (trendBalloons) {
+            return trendBalloons.find((el) => el.time === Math.max(...trendBalloons.map((el) => el.time)));
+
+        }
+
+    }
+
+    if (trendingBalloons.length !== 0) {
+        setTimeout(() => setDisplayState(true), 7000)
+    }
+
+
+    ;
+
     return (
         <>
             <div className="main-flex">
 
-       {output.length !==0 ? <WinningBalloon key={output[0].color} color={output[0].color} count={output[0].count} displayBool={displayState} basecolor={output[0].basecolor} subsurface={output[0].subsurface} />:"" }
+
                 <div className="main-content">
                     <h1 id="ContentTypography">
                         Popular Colors
                     </h1>
                     {balloons.filter((el: IBalloon) => el.count >= 5 && el.count < 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)}
-                    
+
                 </div>
 
                 <div className="main-content">
                     <h1 id="ContentTypography">
                         The Trending Color
                     </h1>
-                    {balloons.filter((el: IBalloon) => el.count >= 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />).slice(0, 3)}
+                    {
+                        !displayState ?
+                            balloons.filter((el: IBalloon) => el.count >= 11)
+                                .map((el: IBalloon) => <BalloonImages
+                                    key={el.color}
+                                    subsurface={el.subsurface}
+                                    count={el.count}
+                                    basecolor={el.basecolor}
+                                />).slice(0, 3) : balloons
+                                    .map((el: IBalloon) => el.time !== getLongestTrending(trendingBalloons)?.time && el.count > 11? el.count = 9 : <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)
+
+                    }
                 </div>
 
                 <div className="main-content">
@@ -47,7 +82,7 @@ if(output.length !== 0 ){
                     {balloons.filter((el: IBalloon) => el.count >= 1 && el.count <= 4).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)}
 
                 </div>
-                
+                {getLongestTrending(trendingBalloons) !== undefined ? <WinningBalloon onClick={closeWinner} key={getLongestTrending(trendingBalloons)?.color} color={getLongestTrending(trendingBalloons)?.color} count={getLongestTrending(trendingBalloons)?.count} displayBool={displayState} basecolor={getLongestTrending(trendingBalloons)?.basecolor} subsurface={getLongestTrending(trendingBalloons)?.subsurface} /> : ""}
             </div>
         </>)
 }

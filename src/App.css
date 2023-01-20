@@ -126,8 +126,7 @@ height: 200px;
   font-weight: 400;
   line-height: 0px;
   letter-spacing: 0em;
-  text-shadow: 2px 2px #CCFF33;
-  /* text-align: center; */
+  text-align: center;
 
 }
 
@@ -141,9 +140,9 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
   background-color: #d92323ed;
-  box-shadow: 8px 6px 11px #530202de inset;
   
-  border-radius: 20px;
+  
+  border-radius: 10px;
   margin: 15px 15px 15px 15px;
   
 
@@ -160,8 +159,8 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f680b45;
   background-color: #d9be23ed;
-  box-shadow: 8px 6px 11px #534b02de inset;
-  border-radius: 20px;
+  
+  border-radius: 15px;
   margin: 15px 15px 15px 15px;
 
 
@@ -176,8 +175,8 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #216f0b45;
   background-color: #26d923ed;
-  box-shadow: 8px 6px 11px rgba(2, 83, 53, 0.87) inset;
-  border-radius: 20px;
+  
+  border-radius: 10px;
   margin: 15px 15px 15px 15px;
 
 
@@ -192,8 +191,8 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
   background-color: #0b7dbaed;
-  box-shadow: 8px 6px 11px #023753de inset;
-  border-radius: 20px;
+  
+  border-radius: 10px;
   margin: 15px 15px 15px 15px;
 
 }
@@ -207,8 +206,8 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
   background-color: #bb23d9ed;
-  box-shadow: 8px 6px 11px #510f80de inset;
-  border-radius: 20px;
+  
+  border-radius: 10px;
   margin: 15px 15px 15px 15px;
 
 }
@@ -234,23 +233,14 @@ height: 200px;
 
 
 .balloon{
-
-
 width: 67px;
 height: 60.5px;
-
 background: #FF00F5;
 box-shadow: inset 19px 10px 4px rgba(0, 0, 0, 0.41);
-
-
 flex: none;
 justify-content: center;
 align-items: center;
-
 border-radius: 80%;
-
-
-
 }
 
 
@@ -260,8 +250,9 @@ border-radius: 80%;
   align-items: center;
   flex-flow: column;
   justify-content: center;
-  width: 600px;
-  height: auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   background-color: #5946B4;
   border: 1px solid #FF0A0A;
   box-shadow: 0px 2px 0px #FF0A0A 65%;

@@ -2,11 +2,8 @@ import IBalloon from "../IBalloon";
 import BalloonImages from "../assets/BalloonImages";
 
 let WinningBalloon = (props: any) => {
+
   
-
-    
-
-    
     return (
         <>
             <div className="winnerBalloon" style={{ display: props.displayBool ? "flex" : "none" }} >
@@ -19,8 +16,6 @@ let WinningBalloon = (props: any) => {
 
                 </div>
             </div>
-
-
         </>)
 }
 
