@@ -3,15 +3,11 @@
   height: 100%;
 }
 
-
-
 html {
   width: 100%;
   height: 100%;
   background-color: #390099;
 }
-
-
 
 .footer {
   position: absolute;
@@ -20,6 +16,7 @@ html {
   border-top: 1px solid #FF0A0A;
   box-shadow: 6px 1px 11px #FF0A0A inset;
   background-color: #ffffff;
+  z-index: -5;
 }
 
 .header-font {
@@ -28,7 +25,6 @@ html {
   font-size: 57px;
   text-align: center;
   text-shadow: -3px 8px 3px rgba(0, 0, 0, 0.47);
-
   font-style: normal;
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.62);
   -webkit-text-fill-color: #E0B1CB;
@@ -36,16 +32,12 @@ html {
 
 .header {
   background-color: #5946B4;
-
-  /* font-weight: 400; */
-  /* max-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   /* font-size: calc(10px + 2vmin); */
   color: rgb(0, 0, 0);
-
   /* position: absolute; */
   top: 0;
   width: 100%;
@@ -69,25 +61,20 @@ html {
   padding: 2% 2% 2% 2%;
   font-family: Moul;
   opacity: .8;
-
 }
 
 #ContentTypography {
   font-family: 'Irish Grover';
   color: #E0B1CB;
   stroke-width: 2%;
-
-
   font-weight: 400;
   font-size: 23px;
   line-height: 57px;
-
 }
 
 .main-content {
-
   width: 30%;
-height: 200px;
+  height: 200px;
   margin: 2% 2% 2% 2%;
   background-color: #5946B4;
   border: 1px solid #FF0A0A;
@@ -98,7 +85,6 @@ height: 200px;
 }
 
 .footer {
-
   background-color: #5946B4;
   width: 100%;
   box-shadow: 6px 1px 11px #000 inset;
@@ -119,20 +105,16 @@ height: 200px;
 .btn-pink,
 .btn-blue,
 .btn-yellow {
-
-  
   font-family: 'Irish Grover';
   font-size: 24px;
   font-weight: 400;
   line-height: 0px;
   letter-spacing: 0em;
   text-align: center;
-
 }
 
 
-.btn-red {
-  
+.btn-red {  
   min-width: 200px;
   max-width: 200px;
   height: 50px;
@@ -140,14 +122,8 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
   background-color: #d92323ed;
-  
-  
   border-radius: 10px;
   margin: 15px 15px 15px 15px;
-  
-
-
-
 }
 
 .btn-yellow {
@@ -159,15 +135,11 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f680b45;
   background-color: #d9be23ed;
-  
   border-radius: 15px;
   margin: 15px 15px 15px 15px;
-
-
 }
 
 .btn-green {
-  
   min-width: 200px;
   max-width: 200px;
   height: 50px;
@@ -175,15 +147,11 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #216f0b45;
   background-color: #26d923ed;
-  
   border-radius: 10px;
   margin: 15px 15px 15px 15px;
-
-
 }
 
 .btn-blue {
-  
   min-width: 200px;
   max-width: 200px;
   height: 50px;
@@ -191,46 +159,33 @@ height: 200px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
   background-color: #0b7dbaed;
-  
   border-radius: 10px;
   margin: 15px 15px 15px 15px;
-
 }
 
 .btn-pink {
-  
   min-width: 200px;
   max-width: 200px;
   height: 50px;
   margin-left: 50px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
-  background-color: #bb23d9ed;
-  
+  background-color: #bb23d9ed;  
   border-radius: 10px;
   margin: 15px 15px 15px 15px;
-
 }
 
 .balloon-float{
   animation: balloon-float infinite 7s;
-  
 }
 @keyframes balloon-float {
   0%, 100% {
     transform: translateY(0);
-    
-    
   }
   50% {
-    
-    transform: translateY(-6px);
-    
-    
+    transform: translateY(-6px);    
   }
 } 
-
-
 
 .balloon{
 width: 67px;
@@ -242,7 +197,6 @@ justify-content: center;
 align-items: center;
 border-radius: 80%;
 }
-
 
 .winnerBalloon{
   animation: fadeIn infinite 3s;
@@ -264,24 +218,44 @@ border-radius: 80%;
   margin-right: auto;
   font-family: 'Irish Grover';
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 0px;
   letter-spacing: 0em;
   text-shadow: 2px 2px #CCFF33;
-
-
 }
 @keyframes fadeIn {
   0%, 100% {
-    transform: translateY(0);
-    
-    
+    transform: translateY(0);    
   }
-  50% {
-    
-    transform: translateY(-6px);
-    
-    
+  10% {
+    transform: translateY(-6px);    
   }
 }
 
+.glow{
+  animation: glow 5s ease-in-out infinite backwards;
+}
+
+@keyframes glow {
+  from{
+    box-shadow: 0px 0px 8px  #cbc4c492;
+    box-shadow: 0px 0px 13px  #fec700;
+  }
+
+  to{
+    box-shadow: 0px 0px 20px 7px #cbc4c4ae;
+    box-shadow: 0px 0px 20px 7px #fec700b8;
+  }
+}
+
+.btn:hover{
+  animation: glow 1s ease-in-out infinite alternate;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.btn:active{
+  transform: scale3d(0.25,0.25,0.25);
+}

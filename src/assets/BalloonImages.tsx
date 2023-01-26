@@ -10,14 +10,14 @@ let BalloonImages = (props: any) => {
 
 
 <>
-<svg className="balloon-float" width="50" height="70" viewBox="0 0 88 134" fill={basecolor} xmlns="http://www.w3.org/2000/svg">
+<svg className={"balloon-float "} width="50" height="70" viewBox="0 0 88 134" fill={basecolor} xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_3_31)">
-        <g filter="url(#filter1_i_3_31)">
+        <g  filter="url(#filter1_i_3_31)">
             <path d="M88 25.4737C88 39.5424 67.6084 60.5 54.5 60.5C41.3916 60.5 21 39.5424 21 25.4737C21 11.405 35.9985 0 54.5 0C73.0015 0 88 11.405 88 25.4737Z" fill={subsurface} />
         </g>
-        <path d="M54.9573 60.5L54.0427 87.0242" stroke="black" />
+        <path  d="M54.9573 60.5L54.0427 87.0242" stroke="black" />
     </g>
-        <text fill="black" x="59%" y="20%" dominantBaseline="middle" textAnchor="middle">
+        <text  fill="black" x="59%" y="20%" dominantBaseline="middle" textAnchor="middle">
             <tspan fontSize="30" fontFamily="Irish Grover">{count}</tspan>
 
         </text>

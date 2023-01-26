@@ -3,6 +3,7 @@ export default interface IBalloon {
     color: string,
     count: number,
     basecolor:string,
-    subsurface:string
+    subsurface:string,
+    time:number
 }
 
