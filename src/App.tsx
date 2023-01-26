@@ -12,10 +12,36 @@ import BalloonImages from './assets/BalloonImages';
 
 function App() {
 
-  
+
+
   let [displayState, setDisplayState] = useState(false);
   let [balloons, setBalloons] = useState<any>([]);
-  // { balloons, setBalloons } = useContext<any>(BalloonContext);
+
+  useEffect(() => {
+    axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) =>  JSON.parse(localStorage.getItem('balloons')).length !== 5 ?localStorage.setItem("balloons",JSON.stringify(response.data)): null).catch(err => err.message);
+  }, [])
+
+  useEffect(() => {
+    
+    let items =  JSON.parse(localStorage.getItem('balloons'))
+    console.log( JSON.parse(localStorage.getItem('balloons')).length);
+    
+    if (items) {
+      setBalloons(items);
+     }
+    
+  }, [])
+
+//   useEffect(()=> {
+
+//   axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) => localStorage.setItem("balloons", JSON.stringify(response.data))).catch(err => err.message);
+// },[])
+
+
+  //   setBalloons(JSON.parse(saved))
+
+  // },[])
+
 
   let Popular = () => {
     let { balloons } = React.useContext<any>(BalloonContext);
@@ -30,7 +56,8 @@ function App() {
   let Trending = () => {
     let start = Date.now()
 
-    let { balloons, setBalloons } = React.useContext<any>(BalloonContext);
+    let { balloons } = React.useContext<any>(BalloonContext);
+
     let trendingBalloons: Array<any> = balloons
       .filter((el: IBalloon) => el.count >= 11)
       .map((el: IBalloon) => !el["time"] ? el["time"] = start : el).sort((el1: any, el2: any) => {
@@ -59,16 +86,14 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) => setBalloons(response.data)).catch(err => err.message);
 
-  }, [])
+
+
 
   return (
     <div className="App">
       <>
-
-        <BalloonContext.Provider value={{ balloons, setBalloons, Popular, UpcomingBalloons, Trending ,getLatestTrending, getLongestTrending }}>
+        <BalloonContext.Provider value={{ balloons, setBalloons, Popular, UpcomingBalloons, Trending, getLatestTrending, getLongestTrending }}>
           <Header />
           <Main />
           <Footer />

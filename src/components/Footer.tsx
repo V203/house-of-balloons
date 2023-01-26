@@ -39,6 +39,10 @@ let Footer = () => {
 
 
                 setBalloons(updateBalloons);
+                localStorage.setItem("balloons",JSON.stringify(balloons));
+                let savedBalloons:any = localStorage.getItem("balloons")
+                console.log(JSON.parse(savedBalloons));
+                
 
         }
 

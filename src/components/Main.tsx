@@ -1,9 +1,5 @@
 import React from "react";
-
-
-
 import ContentBalloon from "./ContentBalloon";
-
 
 let Main = () => {
   
@@ -15,8 +11,7 @@ let Main = () => {
                <ContentBalloon title={"Upcoming Colors"} />
                </div>
                </> 
-      
-        )
+            )
 }
 
 export default Main;
