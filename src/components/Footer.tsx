@@ -11,7 +11,9 @@ let Footer = () => {
                     return trendBalloons.find((el) => el.time === Math.min(...trendBalloons.map((el) => el.time)));
                 }
             }
-        let { balloons, setBalloons } = useContext(BalloonContext);
+
+            
+        let { balloons, setBalloons } = useContext<any>(BalloonContext);
         let handleClick = async (color: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                 e.preventDefault();
 
