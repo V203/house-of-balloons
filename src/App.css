@@ -114,7 +114,7 @@ html {
 }
 
 
-.btn-red {  
+.btn-red {
   min-width: 200px;
   max-width: 200px;
   height: 50px;
@@ -127,7 +127,7 @@ html {
 }
 
 .btn-yellow {
-  
+
   min-width: 200px;
   max-width: 200px;
   height: 50px;
@@ -170,37 +170,41 @@ html {
   margin-left: 50px;
   margin-right: 50px;
   border: 1px solid #6f0b0b45;
-  background-color: #bb23d9ed;  
+  background-color: #bb23d9ed;
   border-radius: 10px;
   margin: 15px 15px 15px 15px;
 }
 
-.balloon-float{
+.balloon-float {
   animation: balloon-float infinite 7s;
 }
+
 @keyframes balloon-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-6px);    
-  }
-} 
 
-.balloon{
-width: 67px;
-height: 60.5px;
-background: #FF00F5;
-box-shadow: inset 19px 10px 4px rgba(0, 0, 0, 0.41);
-flex: none;
-justify-content: center;
-align-items: center;
-border-radius: 80%;
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
-.winnerBalloon{
+.balloon {
+  width: 67px;
+  height: 60.5px;
+  background: #FF00F5;
+  box-shadow: inset 19px 10px 4px rgba(0, 0, 0, 0.41);
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 80%;
+}
+
+.winnerBalloon {
   animation: fadeIn infinite 3s;
-  display:  none;
+  display: none;
   align-items: center;
   flex-flow: column;
   justify-content: center;
@@ -212,7 +216,7 @@ border-radius: 80%;
   box-shadow: 0px 2px 0px #FF0A0A 65%;
   box-shadow: 0px 2px 15px 0px #FF0A0AA6;
   box-shadow: 0px 2px 15px rgba(255, 10, 10, 0.65);
-  position: absolute  ;
+  position: absolute;
   z-index: 12;
   margin-left: auto;
   margin-right: auto;
@@ -223,32 +227,36 @@ border-radius: 80%;
   letter-spacing: 0em;
   text-shadow: 2px 2px #CCFF33;
 }
+
 @keyframes fadeIn {
-  0%, 100% {
-    transform: translateY(0);    
+
+  0%,
+  100% {
+    transform: translateY(0);
   }
+
   10% {
-    transform: translateY(-6px);    
+    transform: translateY(-6px);
   }
 }
 
-.glow{
+.glow {
   animation: glow 5s ease-in-out infinite backwards;
 }
 
 @keyframes glow {
-  from{
-    box-shadow: 0px 0px 8px  #cbc4c492;
-    box-shadow: 0px 0px 13px  #fec700;
+  from {
+    box-shadow: 0px 0px 8px #cbc4c492;
+    box-shadow: 0px 0px 13px #fec700;
   }
 
-  to{
+  to {
     box-shadow: 0px 0px 20px 7px #cbc4c4ae;
     box-shadow: 0px 0px 20px 7px #fec700b8;
   }
 }
 
-.btn:hover{
+.btn:hover {
   animation: glow 1s ease-in-out infinite alternate;
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in;
@@ -256,6 +264,21 @@ border-radius: 80%;
   transition: all 0.4s ease-in;
 }
 
-.btn:active{
-  transform: scale3d(0.25,0.25,0.25);
+.btn:active {
+  transform: scale3d(0.25, 0.25, 0.25);
+}
+
+
+
+.reset {
+  margin-top: 5px;
+  font-family: Irish Grover;
+  font-weight: 10px;
+  width: 50px;
+  height: 50px;
+  margin: auto auto;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

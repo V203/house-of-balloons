@@ -1,48 +1,37 @@
 import React, { useContext } from "react"
 import { BalloonContext } from "../context/Ballooncontext";
 import IBalloon from "../IBalloon";
+import { supabase } from "../supabaseClient";
 
 
 
 let Footer = () => {
-        let getLongestTrending = (trendBalloons: Array<IBalloon>) => {
+        // let getLongestTrending = (trendBalloons: Array<IBalloon>) => {
 
-                if (trendBalloons) {
-                    return trendBalloons.find((el) => el.time === Math.min(...trendBalloons.map((el) => el.time)));
-                }
-            }
+        //         if (trendBalloons) {
+        //                 return trendBalloons.find((el) => el.time === Math.min(...trendBalloons.map((el) => el.time)));
+        //         }
+        // }
 
-            
-        let { balloons, setBalloons } = useContext<any>(BalloonContext);
+
+        let { balloons, setBalloons, retrieveBalloons,Trending } = useContext<any>(BalloonContext);
+
         let handleClick = async (color: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                 e.preventDefault();
 
-
-
-                let updateBalloons = balloons.map((balloons: IBalloon, index: number,arr:Array<IBalloon>) => {
-                        
-                        if (balloons.color !== color) {
-                                return balloons
-                        } 
-                        else if (index >= 3 && balloons.count >= 10) {                                                        
-                                arr[0].count = 9                            
-                                return {...balloons,count:balloons.count + 1}
-                        } else {
-                                
-                                return {
-                                        ...balloons, count: balloons.count + 1
-                                }
-                        }
-                }).sort((el1: any, el2: any) => {
-                        return (el1.count < el2.count) ? 1 : (el1.count > el2.count) ? -1 : 0;
-                });
-
-
-                setBalloons(updateBalloons);
-                localStorage.setItem("balloons",JSON.stringify(balloons));
-                let savedBalloons:any = localStorage.getItem("balloons")
-                console.log(JSON.parse(savedBalloons));
                 
+                if( Trending.length > 3 || Trending){
+                        
+                        const { error } = await supabase.rpc('update_balloon_v2', { color_param: color });
+                        const { data } = await supabase.rpc('all_balloons');
+                        error ? console.log(error ): null;
+                        
+                        setBalloons(data);
+                }else{
+                        console.log(balloons);
+                        
+                }
+
 
         }
 

@@ -4,9 +4,14 @@ import { BalloonContext,  } from "../context/Ballooncontext";
 
 import IBalloon from "../IBalloon";
 
-let ContentBalloon = (props: any) => {
+let 
+ContentBalloon = (props: any) => {
     
     let { Popular, Trending,UpcomingBalloons} = useContext<any>(BalloonContext);
+    //  getBalloons().map(((el:IBalloon)=> console.log(el.color)) );
+    // console.log(Popular, Trending, UpcomingBalloons);
+    
+    
     
     switch (props.title) {
         case "Upcoming Colors":

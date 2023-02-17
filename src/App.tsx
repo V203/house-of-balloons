@@ -5,98 +5,88 @@ import Main from "./components/Main";
 import Header from "./components/Header"
 import { useState, useEffect, useContext } from 'react';
 import { BalloonContext } from './context/Ballooncontext';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import IBalloon from './IBalloon';
 import React from 'react';
 import BalloonImages from './assets/BalloonImages';
+import { supabase } from './supabaseClient';
+import { getLatestTrending,  Popular, Trending, UpcomingBalloons } from './components/BalloonCategories';
+
 
 function App() {
 
-
+  let [longest,setLongest] = useState<any>([])
 
   let [displayState, setDisplayState] = useState(false);
   let [balloons, setBalloons] = useState<any>([]);
 
+
+  // useEffect(() => {
+  // axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) => console.log(response.data.color)).catch(err => err.message);
+  // console.log();
+  // let D = JSON.parse(localStorage.getItem("balloons"))
+  // let fakaIballoons = async () => {
+  //   D.map(async (el: any) => await supabase.from("balloons").insert({ color: el.color, count: el.count, subsurface: el.subsurface, basecolor:el.basecolor }))
+
+  //   }
+
+  // fakaIballoons()
+
+  // }, [])
+
+  let update_time = async (time: number, color: string) => {
+    await supabase.rpc('update_time', { new_time: time, color_param: color })
+
+  }
+
+   let getLongestTrending = async function (): Promise<any[] | null> {
+    let {setLongest} = useContext(BalloonContext)
+    let {data} = (await supabase.rpc("get_longest_trending"));
+    console.log(data);
+    
+    setLongest(data)
+    
+    
+    return data
+    
+  }
+  
+
+  let retrieveBalloons = async () => {
+    let { data, error } = await supabase.from('balloons').select();
+    balloons.length === 0 ? setBalloons(data) : console.log(error);
+    // console.log(data);
+
+  }
   useEffect(() => {
-    axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) =>  JSON.parse(localStorage.getItem('balloons')).length !== 5 ?localStorage.setItem("balloons",JSON.stringify(response.data)): null).catch(err => err.message);
+    retrieveBalloons()
   }, [])
 
-  useEffect(() => {
-    
-    let items =  JSON.parse(localStorage.getItem('balloons'))
-    console.log( JSON.parse(localStorage.getItem('balloons')).length);
-    
-    if (items) {
-      setBalloons(items);
-     }
-    
-  }, [])
-
-//   useEffect(()=> {
-
-//   axios.get("https://v203.github.io/balloon-api/balloons.json").then((response) => localStorage.setItem("balloons", JSON.stringify(response.data))).catch(err => err.message);
-// },[])
-
-
-  //   setBalloons(JSON.parse(saved))
-
-  // },[])
-
-
-  let Popular = () => {
-    let { balloons } = React.useContext<any>(BalloonContext);
-    return balloons.filter((el: IBalloon) => el.count >= 5 && el.count < 11).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)
+  let insertTime = async (time_param: number) => {
+    let { error } = await supabase.from("balloons").update({ time: time_param })
   }
-
-  let UpcomingBalloons = () => {
-    let { balloons, setBalloons } = React.useContext<any>(BalloonContext);
-    return balloons.filter((el: IBalloon) => el.count >= 1 && el.count <= 4).map((el: IBalloon) => <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />)
-  }
-
-  let Trending = () => {
-    let start = Date.now()
-
-    let { balloons } = React.useContext<any>(BalloonContext);
-
-    let trendingBalloons: Array<any> = balloons
-      .filter((el: IBalloon) => el.count >= 11)
-      .map((el: IBalloon) => !el["time"] ? el["time"] = start : el).sort((el1: any, el2: any) => {
-        return (el1.time < el2.time) ? 1 : (el1.time > el2.time) ? -1 : 0;
-      });
-
-    if (trendingBalloons.length !== 0) {
-      setTimeout(() => setDisplayState(!displayState), 50000);
-      setTimeout(() => trendingBalloons ? trendingBalloons.map((el: IBalloon) => { (el.time === getLongestTrending(trendingBalloons)?.time ? el.count = 9 : null) }) : null, 100000);
-    }
-
-    return trendingBalloons.map((el: IBalloon) => {
-      return <BalloonImages key={el.color} subsurface={el.subsurface} count={el.count} basecolor={el.basecolor} />
-    })
-  }
-
-  let getLongestTrending = (trendBalloons: Array<IBalloon>) => {
-    if (trendBalloons) {
-      return trendBalloons.find((el) => el.time === Math.min(...trendBalloons.map((el) => el.time)));
-    }
-  }
-
-  let getLatestTrending = (trendBalloons: Array<IBalloon>) => {
-    if (trendBalloons) {
-      return trendBalloons.find((el) => el.time === Math.max(...trendBalloons.map((el) => el.time)));
-    }
-  }
-
-
-
-
 
   return (
     <div className="App">
       <>
-        <BalloonContext.Provider value={{ balloons, setBalloons, Popular, UpcomingBalloons, Trending, getLatestTrending, getLongestTrending }}>
+        <BalloonContext.Provider value={{
+          displayState,
+          setDisplayState,
+          balloons,
+          setBalloons,
+          Popular,
+          UpcomingBalloons,
+          Trending, getLatestTrending,
+           retrieveBalloons,
+          insertTime, update_time,longest,setLongest
+        }}>
+
+
           <Header />
           <Main />
           <Footer />
+
+
         </BalloonContext.Provider>
       </>
     </div>
